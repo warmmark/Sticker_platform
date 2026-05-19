@@ -1,0 +1,2 @@
+{% extends 'marketplace/base.html' %}
+{% block content %}<h1>Заказ #{{ order.pk }}</h1><div class="card"><p><b>Объявление:</b> {{ order.listing.title }}</p><p><b>Покупатель:</b> {{ order.buyer }}</p><p><b>Исполнитель:</b> {{ order.seller }}</p><p><b>Статус:</b> {{ order.get_status_display }}</p><p><b>Комментарий:</b> {{ order.comment|default:'-' }}</p></div><form method="post" class="form-card">{% csrf_token %}{{ form.as_p }}<button>Обновить статус</button></form>{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'marketplace/base.html' %}
+{% block title %}Главная{% endblock %}
+{% block content %}
+<section class="hero">
+    <div>
+        <h1>Платформа для заказа цифровых стикеров и эмоджи-паков</h1>
+        <p>Художники размещают услуги, заказчики находят исполнителей, оформляют заказы и ведут переписку.</p>
+        <a class="button" href="{% url 'catalog' %}">Перейти в каталог</a>
+    </div>
+</section>
+
+<h2>Последние объявления</h2>
+<div class="grid">
+{% for listing in latest_listings %}{% include 'marketplace/components_listing_card.html' %}{% empty %}<p>Пока объявлений нет.</p>{% endfor %}
+</div>
+
+<h2>Популярные объявления</h2>
+<div class="grid">
+{% for listing in popular_listings %}{% include 'marketplace/components_listing_card.html' %}{% empty %}<p>Пока популярных объявлений нет.</p>{% endfor %}
+</div>
+{% endblock %}

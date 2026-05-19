@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sticker Platform{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<header class="topbar">
+    <a class="logo" href="{% url 'home' %}">Sticker Platform</a>
+    <nav>
+        <a href="{% url 'catalog' %}">Каталог</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'profile' %}">Профиль</a>
+            <a href="{% url 'my_listings' %}">Мои объявления</a>
+            <a href="{% url 'orders' %}">Заказы</a>
+            <a href="{% url 'favorites' %}">Избранное</a>
+            <a href="{% url 'conversations' %}">Сообщения</a>
+            <form action="{% url 'logout' %}" method="post" class="inline-form">{% csrf_token %}<button>Выйти</button></form>
+        {% else %}
+            <a href="{% url 'login' %}">Вход</a>
+            <a href="{% url 'register' %}">Регистрация</a>
+        {% endif %}
+    </nav>
+</header>
+
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}<div class="message {{ message.tags }}">{{ message }}</div>{% endfor %}
+</div>
+{% endif %}
+
+<main class="container">
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>

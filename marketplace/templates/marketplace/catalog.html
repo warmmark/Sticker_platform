@@ -1,0 +1,23 @@
+{% extends 'marketplace/base.html' %}
+{% block title %}Каталог{% endblock %}
+{% block content %}
+<h1>Каталог объявлений</h1>
+<form class="filters" method="get">
+    <input name="q" value="{{ query }}" placeholder="Поиск">
+    <select name="category">
+        <option value="">Все категории</option>
+        <option value="stickers" {% if category == 'stickers' %}selected{% endif %}>Стикеры</option>
+        <option value="emoji" {% if category == 'emoji' %}selected{% endif %}>Эмоджи</option>
+    </select>
+    <input name="min_price" placeholder="Цена от">
+    <input name="max_price" placeholder="Цена до">
+    <select name="sort">
+        <option value="-created_at" {% if sort == '-created_at' %}selected{% endif %}>Новые</option>
+        <option value="popular" {% if sort == 'popular' %}selected{% endif %}>Популярные</option>
+        <option value="price" {% if sort == 'price' %}selected{% endif %}>Дешевле</option>
+        <option value="-price" {% if sort == '-price' %}selected{% endif %}>Дороже</option>
+    </select>
+    <button>Применить</button>
+</form>
+<div class="grid">{% for listing in listings %}{% include 'marketplace/components_listing_card.html' %}{% empty %}<p>Ничего не найдено.</p>{% endfor %}</div>
+{% endblock %}

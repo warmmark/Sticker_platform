@@ -1,0 +1,2 @@
+{% extends 'marketplace/base.html' %}
+{% block content %}<h1>Избранное</h1><div class="grid">{% for fav in favorites %}{% with listing=fav.listing %}{% include 'marketplace/components_listing_card.html' %}{% endwith %}{% empty %}<p>Избранных объявлений нет.</p>{% endfor %}</div>{% endblock %}

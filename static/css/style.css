@@ -1,0 +1,26 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; background: #f6f3ff; color: #1f1f29; }
+a { color: #4f35b5; text-decoration: none; }
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 16px 32px; background: #ffffff; border-bottom: 1px solid #e4def8; position: sticky; top: 0; z-index: 2; }
+.logo { font-weight: 700; font-size: 20px; }
+nav { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.inline-form { display: inline; }
+.inline-form button, button, .button { border: 0; background: #5a3fd6; color: white; padding: 10px 14px; border-radius: 12px; cursor: pointer; display: inline-block; }
+.button.secondary { background: #7d6bea; }
+.container { width: min(1120px, 92vw); margin: 32px auto; }
+.hero { background: linear-gradient(135deg, #ffffff, #ebe4ff); padding: 44px; border-radius: 28px; margin-bottom: 32px; box-shadow: 0 12px 30px rgba(67, 45, 147, .08); }
+.hero h1 { font-size: clamp(32px, 5vw, 56px); margin: 0 0 12px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin: 20px 0 36px; }
+.card, .form-card, .detail { background: #ffffff; border: 1px solid #e7e0fb; border-radius: 22px; padding: 18px; box-shadow: 0 8px 24px rgba(67, 45, 147, .06); }
+.listing-card img, .detail-image { width: 100%; max-height: 260px; object-fit: cover; border-radius: 18px; background: #eee; }
+.badge { display: inline-block; background: #efeaff; color: #4f35b5; padding: 6px 10px; border-radius: 999px; font-size: 13px; }
+.muted { color: #666; }
+.filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 20px 0; }
+input, select, textarea { width: 100%; padding: 10px 12px; border: 1px solid #d8cef4; border-radius: 12px; background: white; }
+.messages { width: min(1120px, 92vw); margin: 16px auto 0; }
+.message { padding: 12px 14px; border-radius: 12px; background: #fff; border: 1px solid #e4def8; margin-bottom: 8px; }
+.detail { display: grid; grid-template-columns: minmax(240px, 420px) 1fr; gap: 24px; }
+.chat { display: grid; gap: 12px; margin-bottom: 20px; }
+.chat-message { max-width: 720px; background: #fff; border: 1px solid #e7e0fb; padding: 12px; border-radius: 16px; }
+.chat-message.own { margin-left: auto; background: #eee9ff; }
+@media (max-width: 760px) { .topbar { align-items: flex-start; flex-direction: column; padding: 14px; } .detail { grid-template-columns: 1fr; } }

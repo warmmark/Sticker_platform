@@ -1,0 +1,23 @@
+{% extends 'marketplace/base.html' %}
+{% block title %}{{ listing.title }}{% endblock %}
+{% block content %}
+<article class="detail">
+    {% if listing.preview_image %}<img class="detail-image" src="{{ listing.preview_image.url }}" alt="{{ listing.title }}">{% endif %}
+    <div>
+        <span class="badge">{{ listing.get_category_display }}</span>
+        <h1>{{ listing.title }}</h1>
+        <p>{{ listing.description }}</p>
+        <p><b>Цена:</b> {{ listing.price }} ₽</p>
+        <p><b>Срок:</b> {{ listing.deadline_days }} дней</p>
+        <p><b>Исполнитель:</b> {{ listing.seller.profile.nickname|default:listing.seller.username }}</p>
+        <p><b>Просмотры:</b> {{ listing.views_count }}</p>
+        {% if user.is_authenticated %}
+            <a class="button" href="{% url 'toggle_favorite' listing.pk %}">{% if is_favorite %}Удалить из избранного{% else %}В избранное{% endif %}</a>
+            {% if user != listing.seller %}
+                <a class="button secondary" href="{% url 'start_conversation' listing.pk %}">Написать продавцу</a>
+                <a class="button secondary" href="{% url 'create_order' listing.pk %}">Оформить заказ</a>
+            {% endif %}
+        {% endif %}
+    </div>
+</article>
+{% endblock %}

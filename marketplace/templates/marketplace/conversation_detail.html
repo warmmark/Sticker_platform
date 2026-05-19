@@ -1,0 +1,2 @@
+{% extends 'marketplace/base.html' %}
+{% block content %}<h1>Диалог по объявлению «{{ conversation.listing.title }}»</h1><div class="chat">{% for message in conversation.messages.all %}<div class="chat-message {% if message.sender == user %}own{% endif %}"><b>{{ message.sender }}</b><p>{{ message.text }}</p><small>{{ message.created_at }}</small></div>{% empty %}<p>Сообщений пока нет.</p>{% endfor %}</div><form method="post" class="form-card">{% csrf_token %}{{ form.as_p }}<button>Отправить</button></form>{% endblock %}

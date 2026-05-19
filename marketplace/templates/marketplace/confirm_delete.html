@@ -1,0 +1,2 @@
+{% extends 'marketplace/base.html' %}
+{% block content %}<h1>Удаление</h1><form method="post" class="form-card">{% csrf_token %}<p>Удалить объект «{{ object }}»?</p><button>Удалить</button></form>{% endblock %}

@@ -1,0 +1,2 @@
+{% extends 'marketplace/base.html' %}
+{% block content %}<h1>Сообщения</h1><div class="grid">{% for c in conversations %}<article class="card"><h3><a href="{% url 'conversation_detail' c.pk %}">{{ c.listing.title }}</a></h3><p>{{ c.buyer }} ↔ {{ c.seller }}</p></article>{% empty %}<p>Диалогов нет.</p>{% endfor %}</div>{% endblock %}

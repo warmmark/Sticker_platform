@@ -1,0 +1,8 @@
+{% extends 'marketplace/base.html' %}
+{% block content %}
+<h1>Заказы</h1>
+<h2>Активные</h2>
+<div class="grid">{% for order in active_orders %}<article class="card"><h3><a href="{% url 'order_detail' order.pk %}">Заказ #{{ order.pk }}</a></h3><p>{{ order.listing.title }}</p><p>{{ order.get_status_display }} · {{ order.price }} ₽</p></article>{% empty %}<p>Активных заказов нет.</p>{% endfor %}</div>
+<h2>Архив</h2>
+<div class="grid">{% for order in archive_orders %}<article class="card"><h3><a href="{% url 'order_detail' order.pk %}">Заказ #{{ order.pk }}</a></h3><p>{{ order.listing.title }}</p><p>{{ order.get_status_display }} · {{ order.price }} ₽</p></article>{% empty %}<p>Архив пуст.</p>{% endfor %}</div>
+{% endblock %}

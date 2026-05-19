@@ -1,0 +1,10 @@
+<article class="card listing-card">
+    {% if listing.preview_image %}<img src="{{ listing.preview_image.url }}" alt="{{ listing.title }}">{% endif %}
+    <div>
+        <span class="badge">{{ listing.get_category_display }}</span>
+        <h3><a href="{% url 'listing_detail' listing.pk %}">{{ listing.title }}</a></h3>
+        <p>{{ listing.description|truncatechars:120 }}</p>
+        <p><b>{{ listing.price }} ₽</b> · {{ listing.deadline_days }} дней</p>
+        <p class="muted">Автор: {{ listing.seller.profile.nickname|default:listing.seller.username }}</p>
+    </div>
+</article>
