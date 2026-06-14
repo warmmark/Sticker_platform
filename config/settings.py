@@ -1,4 +1,3 @@
-(.venv) root@avali /var/www/sticker-platform # cat config/settings.py
 import os
 from pathlib import Path
 from dotenv import load_dotenv
